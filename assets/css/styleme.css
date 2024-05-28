@@ -1,14 +1,14 @@
 body {
     background-color: #282828;
     font-family: Arial, sans-serif;
-    
-    p, li, am, em {
-        color: #fff;
-    }
 }
 
 h1, h2 {
     color: #7473ee;
+}
+
+p, li, em {
+    color: #fff;
 }
 
 a {
