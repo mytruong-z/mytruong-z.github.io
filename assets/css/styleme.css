@@ -11,6 +11,15 @@ h1, h2 {
     color: #7473ee;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
 .flex-container {
     display: flex;
 }
