@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+/* runs test to see if expected argument is === to value returned by function2test argument */
+function myFunctionTest(expected, found) {
+  if (Array.isArray(expected) && Array.isArray(found)) {
+    expected = expected.join();
+    found = found.join();
+  }
+
+  if (expected === found) {
+    return "TEST SUCCEEDED";
+  } else {
+    return "TEST FAILED. Expected " + expected + " but found " + found;
+  }
+}
+
+
+/* max returns the maximum of 2 arguments */
+function max(a, b) {
+  if (a > b) {
+    return a;
+  } else {
+    return b;
+  };
+}
+console.log("Expected output of max(20,10) is 20  " + myFunctionTest(20, max(20, 10)));
+
+/* max3 takes 3 numbers as arguments and returns the largest */
+function maxOfThree(a, b, c) {
+  return max(max(a, b), c);
+
+}
+
+console.log("Expected output of maxOfThree(5,4,44) is 44  " + myFunctionTest(44, maxOfThree(5, 4, 44)));
+console.log("Expected output of maxOfThree(55,4,44) is 55  " + myFunctionTest(55, maxOfThree(55, 4, 44)));
+
+
+/* isVowel takes a character as an argument and returns true if it is a vowel */
+function isVowel(c) {
+  return ['a', 'e', 'i', 'o', 'u'].indexOf(c.toLowerCase()) !== -1;
+}
+
+console.log("Expected output of isVowel('A') is true  " + myFunctionTest(true, isVowel('A')));
+console.log("Expected output of isVowel('b') is false  " + myFunctionTest(false, isVowel('b')));
+console.log("Expected output of isVowel('F') is false  " + myFunctionTest(false, isVowel('F')));
+
+
+/* sum */
+function sum(array)  {
+  return array.reduce((a, b) => a + b, 0);
+}
+
+console.log("Expected output of sum([1,2,3,4]) is 10  " + myFunctionTest(10, sum([1, 2, 3, 4])));
+console.log("Expected output of sum([1,2,3]) is 10  " + myFunctionTest(6, sum([1, 2, 3])));
+
+/* multiply */
+function multiply(array) {
+  return array.reduce((a, b) => a * b, 1);
+}
+
+console.log("Expected output of multiply([1,2,3,4]) is 24  " + myFunctionTest(24, multiply([1, 2, 3, 4])));
+console.log("Expected output of multiply([1,2,3]) is 6  " + myFunctionTest(6, multiply([1, 2, 3])));
+
+/* reverse */
+function reverse(s) {
+  return s.split("").reverse().join("");
+}
+
+console.log("Expected output of reverse('my truong') is 'gnourt ym'  " + myFunctionTest('gnourt ym', reverse('my truong')));
+console.log("Expected output of reverse('thi') is 'iht'  " + myFunctionTest('iht', reverse('thi')));
+
+/* findLongestWord */
+function findLongestWord(array) {
+  return array.reduce((a, b) => a.length > b.length ? a : b);
+}
+
+console.log("Expected output of findLongestWord(['my', 'truong', 'is', 'awesome1']) is 'truong'  " + myFunctionTest('awesome1', findLongestWord(['my', 'truong', 'is', 'awesome1'])));
+console.log("Expected output of findLongestWord(['my', 'truong']) is 'truong'  " + myFunctionTest('truong', findLongestWord(['my', 'truong'])));
+
+/* filterLongWords */
+function filterLongWords(array, i) {
+  return array.filter(word => word.length > i);
+}
+
+console.log("Expected output of filterLongWords(['my', 'truong', 'is', 'awesome1'], 5) is ['truong', 'awesome1']  " + myFunctionTest(['truong', 'awesome1'], filterLongWords(['my', 'truong', 'is', 'awesome1'], 5)));
+console.log("Expected output of filterLongWords(['my', 'truong', 'is', 'awesome1'], 6) is ['awesome1']  " + myFunctionTest(['awesome1'], filterLongWords(['my', 'truong', 'is', 'awesome1'], 6)));
+
+
+    </script>
+</head>
+<body>
+
+Look in the Chrome developer console to see the output. CTRL_SHIFT_J <br />
+Or on Firefox with CTRL_SHIFT_K
+
+</body>
+</html>
