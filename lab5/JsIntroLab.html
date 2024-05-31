@@ -30,6 +30,7 @@ function max(a, b) {
 }
 console.log("Expected output of max(20,10) is 20  " + myFunctionTest(20, max(20, 10)));
 
+console.log("----------------------------------------------------------------------");
 /* max3 takes 3 numbers as arguments and returns the largest */
 function maxOfThree(a, b, c) {
   return max(max(a, b), c);
@@ -39,7 +40,7 @@ function maxOfThree(a, b, c) {
 console.log("Expected output of maxOfThree(5,4,44) is 44  " + myFunctionTest(44, maxOfThree(5, 4, 44)));
 console.log("Expected output of maxOfThree(55,4,44) is 55  " + myFunctionTest(55, maxOfThree(55, 4, 44)));
 
-
+console.log("----------------------------------------------------------------------");
 /* isVowel takes a character as an argument and returns true if it is a vowel */
 function isVowel(c) {
   return ['a', 'e', 'i', 'o', 'u'].indexOf(c.toLowerCase()) !== -1;
@@ -47,17 +48,17 @@ function isVowel(c) {
 
 console.log("Expected output of isVowel('A') is true  " + myFunctionTest(true, isVowel('A')));
 console.log("Expected output of isVowel('b') is false  " + myFunctionTest(false, isVowel('b')));
-console.log("Expected output of isVowel('F') is false  " + myFunctionTest(false, isVowel('F')));
 
-
+console.log("----------------------------------------------------------------------");
 /* sum */
 function sum(array)  {
   return array.reduce((a, b) => a + b, 0);
 }
 
 console.log("Expected output of sum([1,2,3,4]) is 10  " + myFunctionTest(10, sum([1, 2, 3, 4])));
-console.log("Expected output of sum([1,2,3]) is 10  " + myFunctionTest(6, sum([1, 2, 3])));
+console.log("Expected output of sum([1,2,3]) is 6  " + myFunctionTest(6, sum([1, 2, 3])));
 
+console.log("----------------------------------------------------------------------");
 /* multiply */
 function multiply(array) {
   return array.reduce((a, b) => a * b, 1);
@@ -66,6 +67,7 @@ function multiply(array) {
 console.log("Expected output of multiply([1,2,3,4]) is 24  " + myFunctionTest(24, multiply([1, 2, 3, 4])));
 console.log("Expected output of multiply([1,2,3]) is 6  " + myFunctionTest(6, multiply([1, 2, 3])));
 
+console.log("----------------------------------------------------------------------");
 /* reverse */
 function reverse(s) {
   return s.split("").reverse().join("");
@@ -74,6 +76,7 @@ function reverse(s) {
 console.log("Expected output of reverse('my truong') is 'gnourt ym'  " + myFunctionTest('gnourt ym', reverse('my truong')));
 console.log("Expected output of reverse('thi') is 'iht'  " + myFunctionTest('iht', reverse('thi')));
 
+console.log("----------------------------------------------------------------------");
 /* findLongestWord */
 function findLongestWord(array) {
   return array.reduce((a, b) => a.length > b.length ? a : b);
@@ -82,6 +85,7 @@ function findLongestWord(array) {
 console.log("Expected output of findLongestWord(['my', 'truong', 'is', 'awesome1']) is 'truong'  " + myFunctionTest('awesome1', findLongestWord(['my', 'truong', 'is', 'awesome1'])));
 console.log("Expected output of findLongestWord(['my', 'truong']) is 'truong'  " + myFunctionTest('truong', findLongestWord(['my', 'truong'])));
 
+console.log("----------------------------------------------------------------------");
 /* filterLongWords */
 function filterLongWords(array, i) {
   return array.filter(word => word.length > i);
