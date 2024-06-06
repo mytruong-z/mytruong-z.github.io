@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W2D2 Quiz</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+        // initialize mocha
+        mocha.setup('bdd');
+        // chai has a lot of stuff, let's make assert global
+        let assert = chai.assert;
+
+    </script>
+
+    <script>
+        function longestNoSpace(...strings) {
+            return strings
+                .filter(str => !str.includes(" "))
+                .map(str => str.length)
+                .reduce((max, len) => len > max ? len : max, 0);
+        }
+
+        const countObject = (function () {
+            let counter = 0;
+
+            const add = function () {
+                return ++counter;
+            };
+
+            const reset = function () {
+                counter = 0;
+                return counter;
+            };
+
+            return {
+                add: add,
+                reset: reset
+            };
+        })();
+
+        const module = (function () {
+            const privateFunction = function () {
+                // private
+            };
+            const someFunction = function () {
+                // public
+            };
+            const anotherFunction = function () {
+                // public
+            };
+            return {
+                //privateFunction: privateFunction, // not accessible
+                someMethod: someFunction,
+                anotherMethod: anotherFunction
+            };
+        })();
+
+        function make_adder(inc) {
+            let counter = 0;
+            return function () {
+                return counter += inc;
+            };
+        }
+
+        const employeeObject = (function () {
+            let name;
+            let age;
+            let salary;
+
+            const privateGetName = function () {
+                return name;
+            };
+
+            const privateGetAge = function () {
+                return age;
+            };
+
+            const privateGetSalary = function () {
+                return salary;
+            };
+
+            const setName = function (newName) {
+                name = newName;
+            };
+
+            const setAge = function (newAge) {
+                age = newAge;
+            };
+
+            const setSalary = function (newSalary) {
+                salary = newSalary;
+            };
+
+            const increaseSalary = function (percentage) {
+                setSalary(privateGetSalary() * (1 + percentage / 100));
+            };
+
+            const incrementAge = function () {
+                setAge(privateGetAge() + 1);
+            };
+
+            return {
+                setName: setName,
+                setAge: setAge,
+                setSalary: setSalary,
+                increaseSalary: increaseSalary,
+                incrementAge: incrementAge,
+            };
+        })();
+
+        const moduleExtension = (function (employeeObject) {
+            let address;
+
+            const setAddress = function (newAddress) {
+                address = newAddress;
+            };
+
+            const getAddress = function () {
+                return address;
+            };
+
+            return {
+                ...employeeObject,
+                setAddress: setAddress,
+                getAddress: getAddress,
+            };
+        })(employeeObject);
+
+
+        var me = {
+            first: 'Josh',
+            last: 'Splinter',
+            getFullName: function () {
+                return this.first + ' ' + this.last;
+            }
+        };
+
+        var you = {
+            first: 'William',
+            last: 'Smith'
+        };
+
+        //console.log(me.getFullName.apply(you));
+
+        //Modify the jsFiddle at: https://jsfiddle.net/TinaXing/oofzum89/ so that the example works with call.
+        var me = {
+            first: 'Josh',
+            last: 'Splinter',
+            getFullName: function () {
+                return this.first + ' ' + this.last;
+            }
+        };
+
+        var you = {
+            first: 'William',
+            last: 'Smith'
+        };
+
+        //console.log(me.getFullName.call(you));
+
+        //Modify the jsFiddle at: https://jsfiddle.net/TinaXing/oofzum89/ so that the example works with bind.
+        var me = {
+            first: 'Josh',
+            last: 'Splinter',
+            getFullName: function () {
+                return this.first + ' ' + this.last;
+            }
+        };
+
+        var you = {
+            first: 'William',
+            last: 'Smith'
+        };
+
+        var x = 5;
+var y = test();
+var b = { x: 4 };
+var z = y.bind(b);
+z();
+function test() {
+
+    console.log(this); //scope is global
+    console.log(x);// scope is global
+    var z = function() {
+        var x = 3;
+        console.log(this); //scope is global
+        console.log(this.x); //scope is global
+    }
+    var x = 8;
+    z();
+    return z;
+}
+/*
+windown - from the global scope
+undefined - from the test function scope
+windown - global scope
+5 from global scope
+Object {x: 4} -- The this provided by bind
+4 -- x inside the object provided by bind
+*/
+
+
+/*
+- simple regrex
+- 
+*/
+
+    </script>
+    <script src="code.js"></script>
+    <script>
+        describe("longestNoSpace", function () {
+            it("returns 0 if given zero parameters", () => {
+                assert.equal(longestNoSpace(), 0);
+            });
+            it("returns 0 if given a single string that contains a space", () => {
+                assert.equal(longestNoSpace("a test"), 0);
+            })
+            it("returns 0 if given only strings that contains spaces", () => {
+                assert.equal(longestNoSpace("this is", "a test"), 0);
+            });
+            it("returns the length of the string if given a single string without a space", () => {
+                assert.equal(longestNoSpace("hello"), 5);
+            });
+            it("returns the length of the longest string if given multiple strings without spaces", () => {
+                assert.equal(longestNoSpace("hello", "world!"), 6);
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="mocha"></div>
+    <script>
+        mocha.run();
+
+    </script>
+</body>
+
+</html>
