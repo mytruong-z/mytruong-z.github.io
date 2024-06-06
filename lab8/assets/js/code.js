@@ -10,9 +10,7 @@ Array.prototype.bubbleSort = function() {
     for (let i = 0; i < len; i++) {
         for (let j = 0; j < len - 1; j++) {
             if (this[j] > this[j + 1]) {
-                const temp = this[j];
-                this[j] = this[j + 1];
-                this[j + 1] = temp;
+                [this[j], this[j + 1]] = [this[j + 1], this[j]]
             }
         }
     }
