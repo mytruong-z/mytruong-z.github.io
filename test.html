@@ -17,6 +17,60 @@
     </script>
 
     <script>
+
+var b = 5;
+var c = hello(b);
+var a = 1000;
+var d = {a: 50, b: 90};
+console.log(c.bind(d)); //that means c is a function bye() and d is the context
+function hello(a) {
+    console.log(this);
+    a = a * 2;
+    console.log(bye())
+    function bye() {
+        console.log(this);
+        console.log(b);
+        console.log(this.b);
+        return a;
+    }
+    var b = 100;
+    return bye;
+}
+
+
+function Computer(ram, cpu, storage) {
+  this.ram = ram;
+  this.cpu = cpu;
+  this.storage = storage;
+}
+
+Computer.prototype.runProgram = function(program) {
+  console.log("running: " + program);
+};
+
+function Laptop(ram, cpu, storage, battery) {
+  Computer.call(this, ram, cpu, storage);
+  this.battery = battery;
+}
+
+Laptop.prototype = Object.create(Computer.prototype);
+Laptop.prototype.constructor = Laptop;
+
+Laptop.prototype.carryAround = function() {
+  console.log(
+    "carrying laptop: cpu: " + this.cpu + 
+    " ram: " + this.ram + 
+    " storage: " + this.storage + 
+    " battery: " + this.battery
+  );
+};
+
+
+const myLaptop = new Laptop("16GB", "Intel i7", "512GB", "6 hours");
+myLaptop.runProgram("Photoshop"); // running: Photoshop
+myLaptop.carryAround(); // carrying laptop: cpu: Intel i7 ram: 16GB storage: 512GB battery: 6 hours
+
+
         function longestNoSpace(...strings) {
             return strings
                 .filter(str => !str.includes(" "))
@@ -176,24 +230,6 @@
             last: 'Smith'
         };
 
-        var x = 5;
-var y = test();
-var b = { x: 4 };
-var z = y.bind(b);
-z();
-function test() {
-
-    console.log(this); //scope is global
-    console.log(x);// scope is global
-    var z = function() {
-        var x = 3;
-        console.log(this); //scope is global
-        console.log(this.x); //scope is global
-    }
-    var x = 8;
-    z();
-    return z;
-}
 /*
 windown - from the global scope
 undefined - from the test function scope
