@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Type: Text</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+ $("body, div, p, em").click(hello);
+ $("div > p").click(anotherHandler);
+ function hello() {
+ alert("You clicked on the " + this.nodeName);
+ }
+ function anotherHandler() {
+ alert("You clicked on the inner P tag");
+ evt.stopImmediatePropagation();
+ }
+});
+    </script>
+</head>
+
+<body>
+    <div>
+    <p> Events are <em>crazy</em>! </p>
+    </div>
+    <p>Another paragraph!</p>
+   </body>
+
+</html>
